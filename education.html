@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to enable editing for a specific field
+        function enableEdit(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            inputField.disabled = false; // Enable the input field
+            editButton.style.display = 'none'; // Hide edit button
+            saveButton.style.display = 'inline'; // Show save button
+            cancelButton.style.display = 'inline'; // Show cancel button
+        }
+
+        // Function to cancel editing for a specific field
+        function cancelEdit(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            inputField.disabled = true; // Disable the input field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+
+            // Reset field value to original
+            inputField.value = inputField.getAttribute('data-original');
+        }
+
+        // Function to delete the content of a specific field
+        function deleteField(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            inputField.value = ''; // Clear the input field
+        }
+
+        // Function to save changes for a specific field
+        function saveField(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            // Save the current value as the original value
+            inputField.setAttribute('data-original', inputField.value);
+
+            inputField.disabled = true; // Disable the input field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><span class="nav-icon">🏠</span> <a href="index.html">Home</a></li>
+            <li><span class="nav-icon">👤</span> <a href="personal_info.html">Personal Info</a></li>
+            <li><span class="nav-icon">🎓</span> <a href="education.html">Education</a></li>
+            <li><span class="nav-icon">💼</span> <a href="work_experience.html">Work Experience</a></li>
+            <li><span class="nav-icon">⚙️</span> <a href="skills.html">Skills</a></li>
+            <li><span class="nav-icon">📁</span> <a href="projects.html">Projects</a></li>
+            <li><span class="nav-icon">✉️</span> <a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="navy-header">
+            <h1 class="header-title">Education</h1>
+        </div>
+
+        <div class="content-box">
+            <div>
+                <strong>Liivha Combined School</strong>
+                <input type="text" id="liivha_school" value="Completed primary and secondary education." data-original="Completed primary and secondary education." disabled>
+                <button id="edit-liivha_school" onclick="enableEdit('liivha_school')">Edit</button>
+                <button id="save-liivha_school" style="display:none;" onclick="saveField('liivha_school')">Save</button>
+                <button id="cancel-liivha_school" style="display:none;" onclick="cancelEdit('liivha_school')">Cancel</button>
+                <button onclick="deleteField('liivha_school')">Delete</button>
+            </div>
+            <div>
+                <strong>University of Limpopo</strong>
+                <input type="text" id="university_limpopo" value="Degree: Bachelor in Computer Sciences" data-original="Degree: Bachelor in Computer Sciences" disabled>
+                <button id="edit-university_limpopo" onclick="enableEdit('university_limpopo')">Edit</button>
+                <button id="save-university_limpopo" style="display:none;" onclick="saveField('university_limpopo')">Save</button>
+                <button id="cancel-university_limpopo" style="display:none;" onclick="cancelEdit('university_limpopo')">Cancel</button>
+                <button onclick="deleteField('university_limpopo')">Delete</button>
+            </div>
+            <div>
+                <input type="text" id="higher_education" value="Pursued higher education." data-original="Pursued higher education." disabled>
+                <button id="edit-higher_education" onclick="enableEdit('higher_education')">Edit</button>
+                <button id="save-higher_education" style="display:none;" onclick="saveField('higher_education')">Save</button>
+                <button id="cancel-higher_education" style="display:none;" onclick="cancelEdit('higher_education')">Cancel</button>
+                <button onclick="deleteField('higher_education')">Delete</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

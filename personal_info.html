@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Info</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to enable editing for a specific field
+        function enableEdit(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            inputField.disabled = false; // Enable the input field
+            editButton.style.display = 'none'; // Hide edit button
+            saveButton.style.display = 'inline'; // Show save button
+            cancelButton.style.display = 'inline'; // Show cancel button
+        }
+
+        // Function to cancel editing for a specific field
+        function cancelEdit(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            inputField.disabled = true; // Disable the input field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+
+            // Reset field value to original (you can adjust this if needed)
+            inputField.value = inputField.getAttribute('data-original'); 
+        }
+
+        // Function to delete the content of a specific field
+        function deleteField(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            inputField.value = ''; // Clear the input field
+        }
+
+        // Function to save changes for a specific field
+        function saveField(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            // Save the current value as the original value (can be improved for actual backend)
+            inputField.setAttribute('data-original', inputField.value);
+            
+            inputField.disabled = true; // Disable the input field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><span class="nav-icon">🏠</span> <a href="index.html">Home</a></li>
+            <li><span class="nav-icon">👤</span> <a href="personal_info.html">Personal Info</a></li>
+            <li><span class="nav-icon">🎓</span> <a href="education.html">Education</a></li>
+            <li><span class="nav-icon">💼</span> <a href="work_experience.html">Work Experience</a></li>
+            <li><span class="nav-icon">⚙️</span> <a href="skills.html">Skills</a></li>
+            <li><span class="nav-icon">📁</span> <a href="projects.html">Projects</a></li>
+            <li><span class="nav-icon">✉️</span> <a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="navy-header">
+            <h1 class="header-title">Personal Info</h1>
+        </div>
+
+        <div class="content-box">
+            <p><strong>Name:</strong>
+                <input type="text" id="name" value="Percy Mulaudzi" data-original="Percy Mulaudzi" disabled>
+                <button id="edit-name" onclick="enableEdit('name')">Edit</button>
+                <button id="save-name" style="display:none;" onclick="saveField('name')">Save</button>
+                <button id="cancel-name" style="display:none;" onclick="cancelEdit('name')">Cancel</button>
+                <button onclick="deleteField('name')">Delete</button>
+            </p>
+
+            <p><strong>Age:</strong>
+                <input type="text" id="age" value="19 years old" data-original="19 years old" disabled>
+                <button id="edit-age" onclick="enableEdit('age')">Edit</button>
+                <button id="save-age" style="display:none;" onclick="saveField('age')">Save</button>
+                <button id="cancel-age" style="display:none;" onclick="cancelEdit('age')">Cancel</button>
+                <button onclick="deleteField('age')">Delete</button>
+            </p>
+
+            <p><strong>Gender:</strong>
+                <input type="text" id="gender" value="Male" data-original="Male" disabled>
+                <button id="edit-gender" onclick="enableEdit('gender')">Edit</button>
+                <button id="save-gender" style="display:none;" onclick="saveField('gender')">Save</button>
+                <button id="cancel-gender" style="display:none;" onclick="cancelEdit('gender')">Cancel</button>
+                <button onclick="deleteField('gender')">Delete</button>
+            </p>
+
+            <p><strong>ID Number:</strong>
+                <input type="text" id="id_number" value="0504095546082" data-original="0504095546082" disabled>
+                <button id="edit-id_number" onclick="enableEdit('id_number')">Edit</button>
+                <button id="save-id_number" style="display:none;" onclick="saveField('id_number')">Save</button>
+                <button id="cancel-id_number" style="display:none;" onclick="cancelEdit('id_number')">Cancel</button>
+                <button onclick="deleteField('id_number')">Delete</button>
+            </p>
+
+            <p><strong>Nationality:</strong>
+                <input type="text" id="nationality" value="RSA" data-original="RSA" disabled>
+                <button id="edit-nationality" onclick="enableEdit('nationality')">Edit</button>
+                <button id="save-nationality" style="display:none;" onclick="saveField('nationality')">Save</button>
+                <button id="cancel-nationality" style="display:none;" onclick="cancelEdit('nationality')">Cancel</button>
+                <button onclick="deleteField('nationality')">Delete</button>
+            </p>
+
+            <p><strong>Country of Birth:</strong>
+                <input type="text" id="country_of_birth" value="RSA" data-original="RSA" disabled>
+                <button id="edit-country_of_birth" onclick="enableEdit('country_of_birth')">Edit</button>
+                <button id="save-country_of_birth" style="display:none;" onclick="saveField('country_of_birth')">Save</button>
+                <button id="cancel-country_of_birth" style="display:none;" onclick="cancelEdit('country_of_birth')">Cancel</button>
+                <button onclick="deleteField('country_of_birth')">Delete</button>
+            </p>
+
+            <p><strong>Status:</strong>
+                <input type="text" id="status" value="Citizen" data-original="Citizen" disabled>
+                <button id="edit-status" onclick="enableEdit('status')">Edit</button>
+                <button id="save-status" style="display:none;" onclick="saveField('status')">Save</button>
+                <button id="cancel-status" style="display:none;" onclick="cancelEdit('status')">Cancel</button>
+                <button onclick="deleteField('status')">Delete</button>
+            </p>
+
+            <p><strong>Marital Status:</strong>
+                <input type="text" id="marital_status" value="Single" data-original="Single" disabled>
+                <button id="edit-marital_status" onclick="enableEdit('marital_status')">Edit</button>
+                <button id="save-marital_status" style="display:none;" onclick="saveField('marital_status')">Save</button>
+                <button id="cancel-marital_status" style="display:none;" onclick="cancelEdit('marital_status')">Cancel</button>
+                <button onclick="deleteField('marital_status')">Delete</button>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to enable editing for contact information
+        function enableEdit() {
+            const phoneField = document.getElementById('phone');
+            const emailField = document.getElementById('email');
+            const addressField = document.getElementById('address');
+            const editButton = document.getElementById('edit-button');
+            const saveButton = document.getElementById('save-button');
+            const cancelButton = document.getElementById('cancel-button');
+
+            phoneField.disabled = false; // Enable phone field
+            emailField.disabled = false; // Enable email field
+            addressField.disabled = false; // Enable address field
+            editButton.style.display = 'none'; // Hide edit button
+            saveButton.style.display = 'inline'; // Show save button
+            cancelButton.style.display = 'inline'; // Show cancel button
+        }
+
+        // Function to cancel editing contact information
+        function cancelEdit() {
+            const phoneField = document.getElementById('phone');
+            const emailField = document.getElementById('email');
+            const addressField = document.getElementById('address');
+            const editButton = document.getElementById('edit-button');
+            const saveButton = document.getElementById('save-button');
+            const cancelButton = document.getElementById('cancel-button');
+
+            phoneField.disabled = true; // Disable phone field
+            emailField.disabled = true; // Disable email field
+            addressField.disabled = true; // Disable address field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+
+            // Reset fields to their original values
+            phoneField.value = phoneField.getAttribute('data-original');
+            emailField.value = emailField.getAttribute('data-original');
+            addressField.value = addressField.getAttribute('data-original');
+        }
+
+        // Function to save changes to contact information
+        function saveContact() {
+            const phoneField = document.getElementById('phone');
+            const emailField = document.getElementById('email');
+            const addressField = document.getElementById('address');
+            const editButton = document.getElementById('edit-button');
+            const saveButton = document.getElementById('save-button');
+            const cancelButton = document.getElementById('cancel-button');
+
+            // Save the current values as the original values
+            phoneField.setAttribute('data-original', phoneField.value);
+            emailField.setAttribute('data-original', emailField.value);
+            addressField.setAttribute('data-original', addressField.value);
+
+            phoneField.disabled = true; // Disable phone field
+            emailField.disabled = true; // Disable email field
+            addressField.disabled = true; // Disable address field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+        }
+
+        // Function to delete contact information
+        function deleteContact() {
+            document.getElementById('phone').value = ''; // Clear phone field
+            document.getElementById('email').value = ''; // Clear email field
+            document.getElementById('address').value = ''; // Clear address field
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><span class="nav-icon">🏠</span> <a href="index.html">Home</a></li>
+            <li><span class="nav-icon">👤</span> <a href="personal_info.html">Personal Info</a></li>
+            <li><span class="nav-icon">🎓</span> <a href="education.html">Education</a></li>
+            <li><span class="nav-icon">💼</span> <a href="work_experience.html">Work Experience</a></li>
+            <li><span class="nav-icon">⚙️</span> <a href="skills.html">Skills</a></li>
+            <li><span class="nav-icon">📁</span> <a href="projects.html">Projects</a></li>
+            <li><span class="nav-icon">✉️</span> <a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="navy-header">
+            <h1 class="header-title">Contact</h1>
+        </div>
+
+        <div class="content-box">
+            <div>
+                <label for="phone"><strong>Phone Number:</strong></label>
+                <input type="text" id="phone" value="079 346 3974" data-original="079 346 3974" disabled>
+            </div>
+            <div>
+                <label for="email"><strong>Email:</strong></label>
+                <input type="email" id="email" value="dollarpop03@gmail.com" data-original="dollarpop03@gmail.com" disabled>
+            </div>
+            <div>
+                <label for="address"><strong>Address:</strong></label>
+                <input type="text" id="address" value="Limpopo 0950, Thohoyandou M, Unknown Street" data-original="Limpopo 0950, Thohoyandou M, Unknown Street" disabled>
+            </div>
+            <button id="edit-button" onclick="enableEdit()">Edit</button>
+            <button id="save-button" style="display:none;" onclick="saveContact()">Save</button>
+            <button id="cancel-button" style="display:none;" onclick="cancelEdit()">Cancel</button>
+            <button onclick="deleteContact()">Delete</button>
+        </div>
+    </div>
+</body>
+</html>

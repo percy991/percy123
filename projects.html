@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to enable editing for a specific project
+        function enableEdit(projectId) {
+            const titleField = document.getElementById(projectId + '-title');
+            const descriptionField = document.getElementById(projectId + '-description');
+            const editButton = document.getElementById('edit-' + projectId);
+            const saveButton = document.getElementById('save-' + projectId);
+            const cancelButton = document.getElementById('cancel-' + projectId);
+
+            titleField.disabled = false; // Enable the title field
+            descriptionField.disabled = false; // Enable the description field
+            editButton.style.display = 'none'; // Hide edit button
+            saveButton.style.display = 'inline'; // Show save button
+            cancelButton.style.display = 'inline'; // Show cancel button
+        }
+
+        // Function to cancel editing for a specific project
+        function cancelEdit(projectId) {
+            const titleField = document.getElementById(projectId + '-title');
+            const descriptionField = document.getElementById(projectId + '-description');
+            const editButton = document.getElementById('edit-' + projectId);
+            const saveButton = document.getElementById('save-' + projectId);
+            const cancelButton = document.getElementById('cancel-' + projectId);
+
+            titleField.disabled = true; // Disable the title field
+            descriptionField.disabled = true; // Disable the description field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+
+            // Reset fields to their original values
+            titleField.value = titleField.getAttribute('data-original');
+            descriptionField.value = descriptionField.getAttribute('data-original');
+        }
+
+        // Function to delete the content of a specific project
+        function deleteProject(projectId) {
+            const titleField = document.getElementById(projectId + '-title');
+            const descriptionField = document.getElementById(projectId + '-description');
+            titleField.value = ''; // Clear the title field
+            descriptionField.value = ''; // Clear the description field
+        }
+
+        // Function to save changes for a specific project
+        function saveProject(projectId) {
+            const titleField = document.getElementById(projectId + '-title');
+            const descriptionField = document.getElementById(projectId + '-description');
+            const editButton = document.getElementById('edit-' + projectId);
+            const saveButton = document.getElementById('save-' + projectId);
+            const cancelButton = document.getElementById('cancel-' + projectId);
+
+            // Save the current values as the original values
+            titleField.setAttribute('data-original', titleField.value);
+            descriptionField.setAttribute('data-original', descriptionField.value);
+
+            titleField.disabled = true; // Disable the title field
+            descriptionField.disabled = true; // Disable the description field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><span class="nav-icon">🏠</span> <a href="index.html">Home</a></li>
+            <li><span class="nav-icon">👤</span> <a href="personal_info.html">Personal Info</a></li>
+            <li><span class="nav-icon">🎓</span> <a href="education.html">Education</a></li>
+            <li><span class="nav-icon">💼</span> <a href="work_experience.html">Work Experience</a></li>
+            <li><span class="nav-icon">⚙️</span> <a href="skills.html">Skills</a></li>
+            <li><span class="nav-icon">📁</span> <a href="projects.html">Projects</a></li>
+            <li><span class="nav-icon">✉️</span> <a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="navy-header">
+            <h1 class="header-title">Projects</h1>
+        </div>
+
+        <div class="content-box">
+            <div>
+                <input type="text" id="project1-title" value="Project 1: Personal Portfolio Website" data-original="Project 1: Personal Portfolio Website" disabled>
+                <textarea id="project1-description" data-original="Developed a personal portfolio website to showcase my skills, projects, and resume using HTML, CSS, and JavaScript." disabled>Developed a personal portfolio website to showcase my skills, projects, and resume using HTML, CSS, and JavaScript.</textarea>
+                <button id="edit-project1" onclick="enableEdit('project1')">Edit</button>
+                <button id="save-project1" style="display:none;" onclick="saveProject('project1')">Save</button>
+                <button id="cancel-project1" style="display:none;" onclick="cancelEdit('project1')">Cancel</button>
+                <button onclick="deleteProject('project1')">Delete</button>
+            </div>
+
+            <div>
+                <input type="text" id="project2-title" value="Project 2: Task Management App" data-original="Project 2: Task Management App" disabled>
+                <textarea id="project2-description" data-original="Created a task management application that allows users to add, edit, and delete tasks, utilizing C++ for backend logic." disabled>Created a task management application that allows users to add, edit, and delete tasks, utilizing C++ for backend logic.</textarea>
+                <button id="edit-project2" onclick="enableEdit('project2')">Edit</button>
+                <button id="save-project2" style="display:none;" onclick="saveProject('project2')">Save</button>
+                <button id="cancel-project2" style="display:none;" onclick="cancelEdit('project2')">Cancel</button>
+                <button onclick="deleteProject('project2')">Delete</button>
+            </div>
+
+            <div>
+                <input type="text" id="project3-title" value="Project 3: E-commerce Website" data-original="Project 3: E-commerce Website" disabled>
+                <textarea id="project3-description" data-original="Built a fully functional e-commerce website featuring user authentication, product listings, and a shopping cart using Python and Django." disabled>Built a fully functional e-commerce website featuring user authentication, product listings, and a shopping cart using Python and Django.</textarea>
+                <button id="edit-project3" onclick="enableEdit('project3')">Edit</button>
+                <button id="save-project3" style="display:none;" onclick="saveProject('project3')">Save</button>
+                <button id="cancel-project3" style="display:none;" onclick="cancelEdit('project3')">Cancel</button>
+                <button onclick="deleteProject('project3')">Delete</button>
+            </div>
+
+            <div>
+                <input type="text" id="project4-title" value="Project 4: Weather App" data-original="Project 4: Weather App" disabled>
+                <textarea id="project4-description" data-original="Developed a weather application that fetches data from a weather API and displays real-time weather information using JavaScript." disabled>Developed a weather application that fetches data from a weather API and displays real-time weather information using JavaScript.</textarea>
+                <button id="edit-project4" onclick="enableEdit('project4')">Edit</button>
+                <button id="save-project4" style="display:none;" onclick="saveProject('project4')">Save</button>
+                <button id="cancel-project4" style="display:none;" onclick="cancelEdit('project4')">Cancel</button>
+                <button onclick="deleteProject('project4')">Delete</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

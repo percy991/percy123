@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to enable editing for a specific field
+        function enableEdit(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            inputField.disabled = false; // Enable the input field
+            editButton.style.display = 'none'; // Hide edit button
+            saveButton.style.display = 'inline'; // Show save button
+            cancelButton.style.display = 'inline'; // Show cancel button
+        }
+
+        // Function to cancel editing for a specific field
+        function cancelEdit(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            inputField.disabled = true; // Disable the input field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+
+            // Reset field value to original
+            inputField.value = inputField.getAttribute('data-original');
+        }
+
+        // Function to delete the content of a specific field
+        function deleteField(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            inputField.value = ''; // Clear the input field
+        }
+
+        // Function to save changes for a specific field
+        function saveField(fieldId) {
+            const inputField = document.getElementById(fieldId);
+            const editButton = document.getElementById('edit-' + fieldId);
+            const saveButton = document.getElementById('save-' + fieldId);
+            const cancelButton = document.getElementById('cancel-' + fieldId);
+
+            // Save the current value as the original value
+            inputField.setAttribute('data-original', inputField.value);
+
+            inputField.disabled = true; // Disable the input field
+            editButton.style.display = 'inline'; // Show edit button
+            saveButton.style.display = 'none'; // Hide save button
+            cancelButton.style.display = 'none'; // Hide cancel button
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><span class="nav-icon">🏠</span> <a href="index.html">Home</a></li>
+            <li><span class="nav-icon">👤</span> <a href="personal_info.html">Personal Info</a></li>
+            <li><span class="nav-icon">🎓</span> <a href="education.html">Education</a></li>
+            <li><span class="nav-icon">💼</span> <a href="work_experience.html">Work Experience</a></li>
+            <li><span class="nav-icon">⚙️</span> <a href="skills.html">Skills</a></li>
+            <li><span class="nav-icon">📁</span> <a href="projects.html">Projects</a></li>
+            <li><span class="nav-icon">✉️</span> <a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="navy-header">
+            <h1 class="header-title">Work Experience</h1>
+        </div>
+
+        <div class="content-box">
+            <div>
+                <strong>Intern Software Developer at Tech Solutions</strong> (June 2023 - August 2023)
+                <input type="text" id="tech_solutions" value="Assisted in the development of web applications using JavaScript and Python. Collaborated with senior developers to enhance user experience and fix bugs." data-original="Assisted in the development of web applications using JavaScript and Python. Collaborated with senior developers to enhance user experience and fix bugs." disabled>
+                <button id="edit-tech_solutions" onclick="enableEdit('tech_solutions')">Edit</button>
+                <button id="save-tech_solutions" style="display:none;" onclick="saveField('tech_solutions')">Save</button>
+                <button id="cancel-tech_solutions" style="display:none;" onclick="cancelEdit('tech_solutions')">Cancel</button>
+                <button onclick="deleteField('tech_solutions')">Delete</button>
+            </div>
+
+            <div>
+                <strong>Junior Web Developer at Creative Agency</strong> (January 2023 - May 2023)
+                <input type="text" id="creative_agency" value="Worked on creating responsive websites for clients. Engaged in front-end development using HTML, CSS, and JavaScript, while also contributing to back-end development using PHP." data-original="Worked on creating responsive websites for clients. Engaged in front-end development using HTML, CSS, and JavaScript, while also contributing to back-end development using PHP." disabled>
+                <button id="edit-creative_agency" onclick="enableEdit('creative_agency')">Edit</button>
+                <button id="save-creative_agency" style="display:none;" onclick="saveField('creative_agency')">Save</button>
+                <button id="cancel-creative_agency" style="display:none;" onclick="cancelEdit('creative_agency')">Cancel</button>
+                <button onclick="deleteField('creative_agency')">Delete</button>
+            </div>
+
+            <div>
+                <strong>Volunteer Developer at Local Non-Profit</strong> (September 2022 - December 2022)
+                <input type="text" id="local_non_profit" value="Developed a community engagement platform to improve communication and outreach efforts. Used Python and Flask to build the application." data-original="Developed a community engagement platform to improve communication and outreach efforts. Used Python and Flask to build the application." disabled>
+                <button id="edit-local_non_profit" onclick="enableEdit('local_non_profit')">Edit</button>
+                <button id="save-local_non_profit" style="display:none;" onclick="saveField('local_non_profit')">Save</button>
+                <button id="cancel-local_non_profit" style="display:none;" onclick="cancelEdit('local_non_profit')">Cancel</button>
+                <button onclick="deleteField('local_non_profit')">Delete</button>
+            </div>
+
+            <div>
+                <strong>Freelance Web Developer</strong> (Various Projects - 2021 to Present)
+                <input type="text" id="freelance_developer" value="Completed various freelance projects, including personal websites and small business solutions. Focused on delivering high-quality web experiences." data-original="Completed various freelance projects, including personal websites and small business solutions. Focused on delivering high-quality web experiences." disabled>
+                <button id="edit-freelance_developer" onclick="enableEdit('freelance_developer')">Edit</button>
+                <button id="save-freelance_developer" style="display:none;" onclick="saveField('freelance_developer')">Save</button>
+                <button id="cancel-freelance_developer" style="display:none;" onclick="cancelEdit('freelance_developer')">Cancel</button>
+                <button onclick="deleteField('freelance_developer')">Delete</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
